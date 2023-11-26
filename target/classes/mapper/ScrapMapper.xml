@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.campus.mapper.ScrapMapper">
+	<insert id="scrap">
+		insert into mp_scrap (scrapno, member_id, bno)
+		values ((SELECT NVL(MAX(scrapno), 0) +1 FROM mp_scrap), #{memberid}, #{bno})
+	</insert>
+	<delete id="scrapCancel">
+		delete from mp_scrap where bno = #{bno} and member_id = {memberid}
+	</delete>
+	<select id="scrapCount" resultType="int">
+		select count(*) from mp_scrap where bno = #{bno}
+	</select>
+	<select id="scrapCheck" resultType="int">
+		select count(*) from mp_scrap where bno = #{bno} and member_id = #{memberid}
+	</select>
+</mapper>

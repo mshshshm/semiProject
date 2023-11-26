@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.campus.mapper.TipMapper">
+	<insert id ="tipInsert">
+		insert into tip_board(subject, content, userid, ip, category)
+		values(#{subject}, #{content}, #{userid}, #{ip}, #{category})
+	</insert>
+	<select id ="tipPageList" resultType="com.multi.campus.vo.TipVO">
+		select boardno, subject, userid, hit, date_format(writedate, '%m-%d %h:%i') writedate
+		from tip_board
+		<if test="searchWord!=null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		order by boardno desc
+		limit #{onePageRecord} offset ${offsetPoint}
+	</select>
+	<select id="totalRecord">
+		select count(boardno) from tip_board
+		<if test="searchWord!=null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+	<select id="tipSelect" resultType="com.multi.campus.vo.TipVO">
+		select boardno, subject, content, userid, hit, writedate from tip_board
+		where boardno=${param1}
+	</select>
+	<update id="hitCount">
+		update tip_board set hit=hit+1 where boardno=${param1}
+	</update>
+	<update id="tipUpdate">
+		update tip_board set subject=#{subject}, content=#{content} where boardno=${boardno}
+	</update>
+	<delete id="tipDelete">
+		delete from tip_board where boardno=${param1}
+	</delete>
+</mapper>

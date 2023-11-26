@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.campus.mapper.MyPageMapper">
+	<select id="accountSelect" resultType="com.multi.campus.vo.UsersVO">
+		select usernickname, userid, userpwd, email, zipcode, addr, addrdetail, tel from members where userid=#{userid}
+	</select>
+	<update id="mypageUpdate">
+		update members set usernickname=#{usernickname}, email=#{email}, zipcode=#{zipcode}, addr=#{addr}, addrdetail=#{addrdetail}, tel=#{tel} where userid=#{userid}
+	</update>
+	<update id="editpwdOk">
+		update members set userpwd=#{newpwd} where userpwd=#{userpwd}
+	</update>
+	<delete id="accountDelete">
+		delete from members where userid=#{userid}
+	</delete>
+</mapper>

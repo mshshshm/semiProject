@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.campus.mapper.MediaReplyMapper">
+	<insert id ="replyInsert">
+		insert into media_reply (replyno, boardno, userid, content) values(${replyno}, ${boardno}, #{userid}, #{content})
+	</insert>
+	<select id ="replySelect" resultType="com.multi.campus.vo.MediaReplyVO">
+		select replyno, boardno, content, userid, writedate from media_reply where boardno=${param1} order by replyno desc;
+	</select>
+	<update id ="replyUpdate">
+		update media_reply set content=#{content} where replyno=${replyno}
+	</update>
+	<delete id ="replyDelete">
+		delete from media_reply where replyno=${param1}
+	</delete>
+</mapper> 

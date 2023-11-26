@@ -1,0 +1,38 @@
+@charset "UTF-8";
+main{
+	overflow: auto;
+	border: 3px solid black;
+	border-radius: 10px;
+}
+.find_form{
+	width: 600px;
+	margin: 30px auto;
+}
+.find_form li{
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	width: 20%;
+	margin: 20px auto;
+}
+.find_form li:nth-child(2n){
+	width: 80%;
+}
+#find_bn, #reset_bn{
+	width: 300px;
+	height: 40px;
+	margin: 30px auto;
+}
+.find_form input{
+	width: 300px;
+	height: 40px;
+}
+#email_list>input{
+	width: 132px;
+}
+.find_pw, .find_id{
+	margin: 50px;
+}
+#search{
+	text-align: center;
+}

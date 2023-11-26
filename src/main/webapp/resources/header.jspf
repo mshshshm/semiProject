@@ -1,0 +1,78 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>오늘의 한끼</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="/campus/js/header.js"></script>
+<link rel="stylesheet" href="/campus/css/header.css" type="text/css"/>
+</head>
+<body>
+<div class="main_top">
+     <header id="header_header">
+     <style>
+		.container{
+			margin:0 auto;
+		}
+		.main_top{
+		    width: 1300px; margin:0 auto;
+		}
+		</style>
+     	<a href="/campus/" id="logo"><img src="/campus/img/page_main/logo.png"></a>
+        <ul id="menu">
+            <li onmouseover="showSubMenu(1)" onmouseout="showSubHidden(1)">
+				<a href="https://news.google.com/home?hl=ko&gl=KR&ceid=KR:ko">
+					<b>뉴스</b>
+					<!--subMenu-->
+					<ul id="subMenu_1">
+						<li><a href="https://news.google.com/search?q=%EA%B1%B4%EA%B0%95%EC%8B%9D%EB%8B%A8&hl=ko&gl=KR&ceid=KR%3Ako">건강식단</a></li>
+						<li><a href="https://news.google.com/search?q=%EC%8B%9D%EC%9E%AC%EB%A3%8C&hl=ko&gl=KR&ceid=KR%3Ako">식재료</a></li>
+						<li><a href="https://news.google.com/search?q=%EB%8B%A4%EC%9D%B4%EC%96%B4%ED%8A%B8&hl=ko&gl=KR&ceid=KR%3Ako">다이어트</a></li>
+						<li><a href="https://news.google.com/search?q=%EC%A0%9C%EC%B2%A0%EC%9D%8C%EC%8B%9D&hl=ko&gl=KR&ceid=KR%3Ako">제철음식</a></li>
+					</ul>
+				</a>             
+            </li>
+            <li onmouseover="showSubMenu(2)" onmouseout="showSubHidden(2)">
+				<a href="/campus/board/list">
+					<b>게시판</b>
+				</a>
+                <!--subMenu-->
+				<ul id="subMenu_2">
+					<li><a href="/campus/board/list">자유</a></li>
+					<li><a href="/campus/media_board/list">미디어</a></li>
+					<li><a href="/campus/qna_board/list">Q&A</a></li>
+					<li><a href="/campus/tip_board/list">Tip</a></li>
+				</ul>
+            </li>
+            <li onmouseover="showSubMenu(3)" onmouseout="showSubHidden(3)">
+				<a href="/campus/recipe/list">
+					<b>레시피</b>
+				</a>
+				<!--subMenu-->
+				<ul id="subMenu_3">
+					<li><a href="/campus/recipe/list">한식</a></li>
+					<li><a href="/campus/recipe/list">중식</a></li>
+					<li><a href="/campus/recipe/list">양식</a></li>
+					<li><a href="/campus/recipe/list">일식</a></li>
+					<li><a href="/campus/recipe/list">Food Type</a></li>
+					<li><a href="/campus/recipe/list">Dessert</a></li>
+				</ul>
+            </li>          
+        </ul>
+        <c:if test="${logStatus=='' || logStatus !='Y'}">
+	        <div class="login-signup">
+	        	<a href="/campus/users/login" id="l">Login</a>
+	        	<span class="ss">ㅣ</span>
+	        	<a href="/campus/users/create_membership" id="su">Sign-up</a>
+	        </div> 
+        </c:if>
+        <c:if test="${logStatus!='' && logStatus == 'Y'}">
+	        <div class="mypage">
+				<img id="profile" src="/campus/img/page_Login/userMan.png"/>
+				<a href="/campus/mypage/" id="mypage_btn">마이페이지</a>
+				<a href="/campus/users/logout"><button id="logout" class="btn_logout">Logout</button></a>
+		 	</div>   
+		</c:if>  
+    </header>

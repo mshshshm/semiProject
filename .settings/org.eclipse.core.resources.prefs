@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/multi/campus/HomeController.java=UTF-8
+encoding//src/main/java/com/multi/campus/mapper/RecipeMapper.java=UTF-8
+encoding//src/main/java/com/multi/campus/service/RecipeService.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/recipe/recipeView.jsp=UTF-8
+encoding//src/main/webapp/css/recipeView.css=UTF-8

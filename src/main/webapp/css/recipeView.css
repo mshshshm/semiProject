@@ -1,0 +1,122 @@
+#recipe_view{
+	width: 1300px;
+	margin: 0 auto;
+}
+#recipe_view button{
+	border: none;
+	background: none;
+}
+#recipe_header{
+	width: 100%; height: 140px;
+}
+#title_RV{
+	width: 800px; height: 75px; line-height: 75px;
+	margin: 0 auto;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 100px;
+	border: 3px solid black;
+	overflow: hidden;
+}
+#writer{
+	width: 50%; height: 60px;
+	float: left;
+	display: flex;
+    align-items: center;
+}
+#dateShare{
+	width: 50%; height: 60px;
+	float: right;
+	text-align: right;
+}
+#icon_writer{
+	padding:2px;
+	width: 40px; height: 40px;
+	margin-left: 100px;
+	border: 2px solid black;
+	border-radius: 50%;
+}
+#name_writer{
+	font-size: 20px;
+	line-height: 60px;
+	margin-left: 10px;
+}
+#date_recipe{
+	font-size: 15px;
+	line-height: 60px;
+	color: darkgray;
+	margin-right: 20px;
+}
+#icon_share{
+	width: 40px; height: 40px;
+	float: right;
+	margin-top: 10px;
+	margin-right: 100px;
+}
+/*메인 게시글*/
+#textbox_recipe{
+	width: 1100px; height: auto;
+	border:5px solid gray;
+	border-radius: 5px;
+	margin: 0 auto;
+	text-align: center;
+	padding: 30px;
+}
+
+#recipe_context{
+	width: 1000px; height: auto;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#view_left{
+	width: 50%; height: 40px;
+	line-height: 40px;
+	float: left;
+	display: flex;
+    align-items: center;
+    padding-top: 10px;
+    margin-bottom: 5px;
+}
+#view_left form{
+	display: flex;
+}
+#view_right{
+	width: 50%; height: 40px;
+	padding-top: 10px;
+	line-height: 40px;
+	float: right;
+	text-align: right;
+	margin-bottom: 5px;
+}
+#view_left img{
+	width: 40px; height: 40px;
+}
+#heart_recipe{
+	margin-left: 100px;
+}
+#scrap{
+	margin-right: 100px;
+}
+#scrap>img{
+	width: 35px; height: 35px;
+}
+#replyArea{
+	margin: 0 auto;
+	display: flex;
+	width: 1100px; height: auto;
+}
+#replyArea_content{
+	float:left;
+}
+
+.profile_writer>img{
+	width: 40px; height: 40px;
+}
+#coment{
+		width:600px; height:50px;
+}
+#replyList>li{
+	border-bottom:1px solid #ddd;
+}

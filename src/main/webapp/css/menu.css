@@ -1,0 +1,19 @@
+#menu > li {
+    float: left;
+    height: 50px;
+    width: 20%;
+    text-align: center;
+    line-height: 50px;
+}
+
+#menu > li > ul {
+    position: relative;
+    background: white;
+    border: 1px solid #ddd;
+    display: none;   
+}
+
+#menu a:hover {
+    text-decoration: none;
+    color: greenyellow;
+}

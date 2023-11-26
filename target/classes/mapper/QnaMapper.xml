@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.campus.mapper.QnaMapper">
+	<insert id ="qnaInsert">
+		insert into qna_board(subject, content, userid, ip, category)
+		values(#{subject}, #{content}, #{userid}, #{ip}, #{category})
+	</insert>
+	<select id ="qnaPageList" resultType="com.multi.campus.vo.QnaVO">
+		select boardno, subject, userid, hit, date_format(writedate, '%m-%d %h:%i') writedate
+		from qna_board
+		<if test="searchWord!=null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		order by boardno desc
+		limit #{onePageRecord} offset ${offsetPoint}
+	</select>
+	<select id="totalRecord">
+		select count(boardno) from qna_board
+		<if test="searchWord!=null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+	<select id="qnaSelect" resultType="com.multi.campus.vo.QnaVO">
+		select boardno, subject, content, userid, hit, writedate from qna_board
+		where boardno=${param1}
+	</select>
+	<update id="hitCount">
+		update qna_board set hit=hit+1 where boardno=${param1}
+	</update>
+	<update id="qnaUpdate">
+		update qna_board set subject=#{subject}, content=#{content} where boardno=${boardno}
+	</update>
+	<delete id="qnaDelete">
+		delete from qna_board where boardno=${param1}
+	</delete>
+</mapper>

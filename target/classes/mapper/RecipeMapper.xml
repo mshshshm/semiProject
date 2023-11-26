@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.campus.mapper.RecipeMapper">
+	<select id="dataList" resultType="com.multi.campus.vo.RecipeVO">	
+		select recipeno, subject, userid, hit, date_format(writedate,'%m-%d %H:%i') writedate
+		from recipe order by recipeno desc
+	</select>
+	<!-- insert후 auto increment로 생성된 값을 가져오기 -->
+	<insert id="dataInsert" parameterType="com.multi.campus.vo.RecipeVO" useGeneratedKeys="true" keyProperty="recipeno">
+		insert into recipe(subject, content, userid) values(#{subject}, #{content}, #{userid})
+	</insert>
+	<insert id="dataFileInsert" parameterType="java.util.List">
+		<foreach item="item" collection="list" open="insert into recipefile(recipeno, filename) values"
+			separator=",">
+			(${item.recipeno}, #{item.filename})
+		</foreach>
+	</insert>
+	<update id="dataHitCount">
+		update recipe set hit=hit+1 where recipeno=${param1}
+	</update>
+	<select id="dataSelect" resultType="com.multi.campus.vo.RecipeVO">
+		select recipeno, subject, content, userid, hit, writedate from recipe where recipeno=${param1}
+	</select>
+	<select id="getDataFile" resultType="com.multi.campus.vo.RecipefileVO">
+		select recipeno, filename from recipefile where recipeno=${param1}
+	</select>
+	<update id="dataUpdate" parameterType="com.multi.campus.vo.RecipeVO">
+		update recipe set subject=#{subject}, content=#{content} where recipeno=${recipeno} and userid=#{userid}
+	</update>
+	<delete id="dataDelete">
+		delete from recipefile where recipeno=${param1}
+	</delete>
+	<delete id="dataRecordDelete">
+		delete from recipe where recipeno=${param1} and userid=#{param2}
+	</delete> 
+	
+	<select id="selectMyRecipe" resultType="com.multi.campus.vo.RecipeVO">
+	 	select recipeno, subject from recipe
+        where userid = #{userid}
+        order by recipeno desc
+        limit 3
+	</select>
+	
+	<select id="selectMyHeartLecipe" resultType="com.multi.campus.vo.RecipeVO">
+		SELECT r.subject, r.recipeno FROM recipe r, heart h
+        where r.recipeno = h.recipeno and r.userid = #{userid}
+        order by h.heart desc
+        limit 3
+	</select>
+	
+	<select id="recipeCount" resultType="int">
+		SELECT count(*) FROM recipe WHERE userid = #{userid}
+	</select>
+	
+	<select id="findAllMyRecipe" resultType="com.multi.campus.vo.RecipeVO">
+		SELECT recipeno, subject FROM recipe
+        WHERE userid = #{userid}
+        ORDER BY recipeno DESC
+        LIMIT #{onePageRecord} offset #{offsetPoint}
+	</select>
+	
+	<select id="heartCount" resultType="int">
+		SELECT count(*) FROM recipe r, heart h
+        where r.recipeno = h.recipeno and r.userid = #{userid}
+	</select>
+	
+	<select id="findAllHeartRecipe" resultType="com.multi.campus.vo.RecipeVO">
+		SELECT r.subject, r.recipeno FROM recipe r, heart h
+        where r.recipeno = h.recipeno and r.userid = #{userid}
+        order by h.heart desc
+         LIMIT #{onePageRecord} offset #{offsetPoint}
+	</select>
+</mapper>

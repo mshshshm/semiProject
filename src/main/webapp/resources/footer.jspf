@@ -1,0 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<footer>
+	<div id="page_bottom">Copyright @ 2010-2023 오늘의 한끼 저작권법의 보호를 받습니다.</div>
+	<a id="MOVE_TOP_BTN" href="#"><img src="/campus/img/page_main/top.png"/></a>
+</footer>
+</body>
+</html>

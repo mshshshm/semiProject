@@ -1,0 +1,95 @@
+body{
+	width: 1300px;
+	margin: 0 auto;
+}
+.board_write_wrap .bt_wrap {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+
+}
+.board_write_wrap .bt_wrap .btn2 {
+    display: inline-block;
+    min-width: 80px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    font-size: 1rem;
+}
+
+.bt_wrap .btn2:first-child {
+    margin-left: 0;
+}
+
+.bt_wrap .btn2 {
+    background: #000;
+    color: #fff;
+}
+
+.board_write {
+    border-top: 2px solid #000;
+}
+
+.board_write .title,
+.board_write .info {
+    padding: 15px;
+}
+.board_write .title dl {
+    font-size: 0;
+}
+
+.board_write .title dt,
+.board_write .title dd {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1rem;
+}
+
+.board_write .title dt {
+    width: 100px;
+}
+
+.board_write .title dd {
+    width: calc(100% - 100px);
+}
+
+.board_write .title input[type="text"] {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.board_write .title input[type="text"] {
+    width: 100%;
+}
+#category {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.5em 2.2em 0.4em 1em;
+
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+
+    background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    radial-gradient(#ddd 70%, transparent 72%);
+    background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - .5em) .5em;
+    background-size:
+    5px 5px,
+    5px 5px,
+    1.5em 1.5em;
+    background-repeat: no-repeat;
+}

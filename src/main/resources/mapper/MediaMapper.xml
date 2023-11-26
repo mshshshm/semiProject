@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.campus.mapper.MediaMapper">
+	<insert id ="mediaInsert">
+		insert into media_board(subject, content, userid, ip, category)
+		values(#{subject}, #{content}, #{userid}, #{ip}, #{category})
+	</insert>
+	<select id ="mediaPageList" resultType="com.multi.campus.vo.MediaVO">
+		select boardno, subject, userid, hit, date_format(writedate, '%m-%d %h:%i') writedate
+		from media_board
+		<if test="searchWord!=null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		order by boardno desc
+		limit #{onePageRecord} offset ${offsetPoint}
+	</select>
+	<select id="mediaRecord">
+		select count(boardno) from media_board
+		<if test="searchWord!=null">
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+	<select id="mediaSelect" resultType="com.multi.campus.vo.MediaVO">
+		select boardno, subject, content, userid, hit, writedate from media_board
+		where boardno=${param1}
+	</select>
+	<update id="hitCount">
+		update media_board set hit=hit+1 where boardno=${param1}
+	</update>
+	<update id="mediaUpdate">
+		update media_board set subject=#{subject}, content=#{content} where boardno=${boardno}
+	</update>
+	<delete id="mediaDelete">
+		delete from media_board where boardno=${param1}
+	</delete>
+</mapper>
